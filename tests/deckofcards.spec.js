@@ -90,4 +90,16 @@ test.describe('Deck of Cards API', () => {
   });
 
   // Add other it() blocks similarly
+  // Partial Deck
+  // test('Should GET a partial deck', () => {
+
+  // Brand New Deck
+  //test('Should GET a new deck of cards (with/without Jokers)', () => {
+
+  // Back of Card Image
+  //test('Should GET the back of card image', () => {
+
+  //test('Should shuffle 2 decks of cards', () => {
+
+  //test('Should draw cards from a new shuffled deck', () => {
 });
