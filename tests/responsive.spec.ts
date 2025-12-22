@@ -13,6 +13,7 @@ test.skip('responsive layout on mobile', async ({ page }) => {
   // Open the mobile menu
   await page.getByTestId('mobile-menu-button').click();
   
-  // Check that the menu is now visible
+  // IMPROVEMENT: Same as above - use getByRole for better accessibility validation
+  // await expect(page.getByRole('navigation')).toBeVisible();
   await expect(page.getByTestId('sidebar')).toBeVisible();
 });

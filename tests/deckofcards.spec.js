@@ -29,27 +29,27 @@ test.describe('Deck of Cards API', () => {
     const { cards, remaining: remainingAfterDraw } = await draw12.json();
     expect(cards.length).toBe(12);
     expect(remainingAfterDraw).toBe(40);
-    // chatgpt skipped whole section of code setting aside cards and only getting heart cards
     // Out of 12 drawn cards, set aside 8 in a pile
     const pileCards = cards.slice(0, 8).map(card => card.code).join(',');
-    const heartCards = cards.filter(card => card.suit === 'HEARTS');
+    //const heartCards = cards.filter(card => card.suit === 'HEARTS');
     // console.log('Heart Cards from drawn:', heartCards);
     // console.log('Pile Cards:', pileCards);
 
-    // Add to Pile
+    // Set the 8 Cards into a Pile
     const addToPile = await request.get(`${base}/api/deck/${deckID}/pile/my_pile/add/?cards=${pileCards}`);
     await successStatusObjBody(addToPile);
     const addToPileResp = await addToPile.json();
     expect(addToPileResp).toBeInstanceOf(Object);
     expect(addToPileResp.piles.my_pile.remaining).toBe(8);
 
+    // List Cards in the Pile and Verify they are the same as the 8 set aside, line 33
     const listPile = await request.get(`${base}/api/deck/${deckID}/pile/my_pile/list/`);
     await successStatusObjBody(listPile);
     const { piles } = await listPile.json();
     const listPileCodes = piles.my_pile.cards.map(card => card.code).join(',');
     expect(listPileCodes).toEqual(pileCards);
 
-    // Shuffle Pile
+    // Shuffle the Pile of 8 Cards
     const shufflePile = await request.get(`${base}/api/deck/${deckID}/pile/my_pile/shuffle/`);
     await successStatusObjBody(shufflePile);
 
@@ -60,7 +60,7 @@ test.describe('Deck of Cards API', () => {
     const listPileCodesAfterShuffle = pilesAfterShuffle.my_pile.cards.map(card => card.code).join(',');
     expect(listPileCodesAfterShuffle).not.toEqual(pileCards);
 
-    // Return Cards to Deck
+    // Return Cards Not in Pile to Deck
     const returnToDeck = await request.get(`${base}/api/deck/${deckID}/return/`);
     await successStatusObjBody(returnToDeck);
     const returnToDeckResp = await returnToDeck.json();
@@ -80,6 +80,9 @@ test.describe('Deck of Cards API', () => {
     const { cards: drawnFromPile, piles: remainingPile } = await drawFromPile.json();
     expect(drawnFromPile.length).toBe(2);
     expect(remainingPile.my_pile.remaining).toBe(6);
+    const stringToArray = listPileCodesAfterShuffle.split(',');
+    console.log(drawnFromPile.map(card => card.code).join(','))
+    expect(stringToArray.slice(-2).join(',')).toEqual(drawnFromPile.map(card => card.code).join(','));
     // Verify drawn cards are the last two cards from the original pileCards
     //TODO: the following assertions are failing, need to investigate
     const pileCardsArray = pileCards.split(',');
