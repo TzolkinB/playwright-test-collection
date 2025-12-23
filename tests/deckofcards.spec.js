@@ -11,62 +11,63 @@ test.describe('Deck of Cards API', () => {
   const successStatusObjBody = async (response) => {
     expect(response.status()).toBe(200);
     const body = await response.json();
-    expect(typeof body).toBe('object');
-    expect(await response.body()).toBeInstanceOf(Object);
+    expect(typeof body).toBe('object')
+    expect(body).not.toBeNull();
   };
 
+  const getCardCodes = (cards) => cards.map(c => c.code).join(',');
+
   test('Shuffle, draw, pile & reshuffle flow', async ({ request }) => {
-    // Shuffle Deck
+    // STEP 1: Create and shuffle a new deck (test /deck/new/shuffle endpoint)
     const shuffle = await request.get(`${base}/api/deck/new/shuffle/?deck_count=1`);
     await successStatusObjBody(shuffle);
     const { deck_id: deckID, shuffled, remaining } = await shuffle.json();
     expect(shuffled).toBe(true);
     expect(remaining).toBe(52);
 
-    // Draw Cards
+    // STEP 2: Draw 12 cards (test /draw endpoint with count parameter)
     const draw12 = await request.get(`${base}/api/deck/${deckID}/draw/?count=12`);
     await successStatusObjBody(draw12);
     const { cards, remaining: remainingAfterDraw } = await draw12.json();
     expect(cards.length).toBe(12);
     expect(remainingAfterDraw).toBe(40);
-    // Out of 12 drawn cards, set aside 8 in a pile
-    const pileCards = cards.slice(0, 8).map(card => card.code).join(',');
-    //const heartCards = cards.filter(card => card.suit === 'HEARTS');
-    // console.log('Heart Cards from drawn:', heartCards);
-    // console.log('Pile Cards:', pileCards);
 
-    // Set the 8 Cards into a Pile
-    const addToPile = await request.get(`${base}/api/deck/${deckID}/pile/my_pile/add/?cards=${pileCards}`);
+    // STEP 3: Test "add to pile" API by selecting 8 cards from the 12 drawn
+    // This tests the pile API feature: /pile/{pile_name}/add/?cards=AS,2S
+    const pileCardCodes = getCardCodes(cards.slice(0, 8));
+
+    // Set the 8 cards into a pile
+    const addToPile = await request.get(`${base}/api/deck/${deckID}/pile/my_pile/add/?cards=${pileCardCodes}`);
     await successStatusObjBody(addToPile);
     const addToPileResp = await addToPile.json();
     expect(addToPileResp).toBeInstanceOf(Object);
     expect(addToPileResp.piles.my_pile.remaining).toBe(8);
 
-    // List Cards in the Pile and Verify they are the same as the 8 set aside, line 33
+    // STEP 4: Verify pile contents match what we added (test /pile/list endpoint)
     const listPile = await request.get(`${base}/api/deck/${deckID}/pile/my_pile/list/`);
     await successStatusObjBody(listPile);
     const { piles } = await listPile.json();
-    const listPileCodes = piles.my_pile.cards.map(card => card.code).join(',');
-    expect(listPileCodes).toEqual(pileCards);
+    const listPileCodes = getCardCodes(piles.my_pile.cards)
+    expect(listPileCodes).toEqual(pileCardCodes);
 
-    // Shuffle the Pile of 8 Cards
+    // STEP 5: Shuffle the pile (test /pile/shuffle endpoint)
     const shufflePile = await request.get(`${base}/api/deck/${deckID}/pile/my_pile/shuffle/`);
     await successStatusObjBody(shufflePile);
 
-    // List Cards in Pile after Shuffle
+    // NOTE: Shuffle API response doesn't include cards, so we must list separately
     const listPileAfterShuffle = await request.get(`${base}/api/deck/${deckID}/pile/my_pile/list/`);
     await successStatusObjBody(listPileAfterShuffle);
     const { piles: pilesAfterShuffle } = await listPileAfterShuffle.json();
-    const listPileCodesAfterShuffle = pilesAfterShuffle.my_pile.cards.map(card => card.code).join(',');
-    expect(listPileCodesAfterShuffle).not.toEqual(pileCards);
+    const listPileCodesAfterShuffle = getCardCodes(pilesAfterShuffle.my_pile.cards);
+    expect(listPileCodesAfterShuffle).not.toEqual(pileCardCodes);
 
-    // Return Cards Not in Pile to Deck
+    // STEP 6: Return cards not in pile back to deck (test /return endpoint)
     const returnToDeck = await request.get(`${base}/api/deck/${deckID}/return/`);
     await successStatusObjBody(returnToDeck);
     const returnToDeckResp = await returnToDeck.json();
     expect(returnToDeckResp.remaining).toBe(44);
 
-    // Reshuffle Cards in Deck
+    // STEP 7: Reshuffle the main deck (test /shuffle with remaining=true parameter)
     // remaining=true only shuffles cards in main stack, not piles or cards drawn
     const reshuffleDeck = await request.get(`${base}/api/deck/${deckID}/shuffle/?remaining=true`);
     await successStatusObjBody(reshuffleDeck);
@@ -74,22 +75,21 @@ test.describe('Deck of Cards API', () => {
     expect(reshuffled).toBe(true);
     expect(remainingAfterReshuffle).toBe(44);
 
-    // Draw 2 cards from bottom of pile
+    // STEP 8: Draw 2 cards from bottom of pile (test /pile/draw with bottom=true parameter)
     const drawFromPile = await request.get(`${base}/api/deck/${deckID}/pile/my_pile/draw/?count=2&bottom=true`);
     await successStatusObjBody(drawFromPile);
     const { cards: drawnFromPile, piles: remainingPile } = await drawFromPile.json();
+
     expect(drawnFromPile.length).toBe(2);
     expect(remainingPile.my_pile.remaining).toBe(6);
-    const stringToArray = listPileCodesAfterShuffle.split(',');
-    console.log(drawnFromPile.map(card => card.code).join(','))
-    expect(stringToArray.slice(-2).join(',')).toEqual(drawnFromPile.map(card => card.code).join(','));
-    // Verify drawn cards are the last two cards from the original pileCards
-    //TODO: the following assertions are failing, need to investigate
-    const pileCardsArray = pileCards.split(',');
-    expect(drawnFromPile[0].code).toBe(pileCardsArray[6]);
-    expect(drawnFromPile[1].code).toBe(pileCardsArray[7]);
-    expect(drawFromPile.my_pile.cards.map(card => card.code).join(',')).toBe(listPileCodesAfterShuffle);
-    // …Continue converting nested API chain exactly like Cypress
+
+    // Verify the bottom 2 cards of shuffled pile match what was drawn
+    const shuffledPileCardCodes = listPileCodesAfterShuffle.split(',');
+    const drawnCardCodes = getCardCodes(drawnFromPile);
+    expect(shuffledPileCardCodes.slice(-2).join(',')).toEqual(drawnCardCodes);
+
+    // CLEANUP SUGGESTION: Extract repeated card code mapping to helper function:
+    // const getCardCodes = (cards) => cards.map(c => c.code).join(',');
   });
 
   // Add other it() blocks similarly
