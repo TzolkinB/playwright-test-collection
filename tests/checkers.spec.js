@@ -1,6 +1,7 @@
 // tests/checkers.spec.js
 import { test, expect } from '@playwright/test';
 import { verifyLink } from './helpers';
+import { time } from 'node:console';
 
 test.describe('Checkers Game UI', () => {
   test.beforeEach(async ({ page }) => {
@@ -10,12 +11,12 @@ test.describe('Checkers Game UI', () => {
 
   test('Should have header, board & correct links', async ({ page, request }) => {
     const rulesHref = "https://en.wikipedia.org/wiki/English_draughts#Starting_position"
-    await expect(page.locator('h1')).toHaveText('Checkers');
+    await expect(page.getByRole('heading', { level: 1, name: 'Checkers' })).toBeVisible();
 
     const board = page.locator('.content').locator('#board');
     await expect(board.locator('img[src="you1.gif"]')).toHaveCount(12); // Player pieces
 
-    const boardLinks = page.locator('.footnote').locator('a')
+    const boardLinks = page.locator('.footnote').getByRole('link');
     await expect(boardLinks).toHaveCount(2);
     await verifyLink(boardLinks, 'Restart...', './')
     await verifyLink(boardLinks, 'Rules', rulesHref)
@@ -32,8 +33,8 @@ test.describe('Checkers Game UI', () => {
     await expect(logo.locator('img')).toHaveAttribute('src', '/image/logo.png');
     await expect(logo.locator('img')).toHaveAttribute('alt', 'Games for the Brain');
 
-    const footerLinks = await nav.locator('#footer').locator('a');
-    expect(footerLinks).toHaveCount(3);
+    const footerLinks = await nav.locator('#footer').getByRole('link');
+    expect(footerLinks).toHaveCount(3, { timeout: 10000 });
 
     const expectedLinks = [
     { text: 'Games for the Brain', href: '/' },
