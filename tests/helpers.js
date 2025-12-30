@@ -15,13 +15,9 @@ export async function verifyMessage(page, text) {
 }
 
 /**
- * Perform a simple "first move" by clicking two squares
- * CURRENT APPROACH:
- *   - Use img[src] selectors to find and test the visual elements displayed to the user
- *   - Verify state changes via src attribute changes as user interacts with the board
+ * Assert image user sees changes as they make their first move
  */
 export async function yourFirstMove(page, from, to) {
-  // Separate assertions and actions
   // Using img[src] selector to test the visual images the user sees
   const selectedPiece = page.locator(`img[src="${from}"]`)
   const moveTo = page.locator(`img[src="${to}"]`)
