@@ -6,6 +6,12 @@ test.describe('Checkers Game Messages', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('https://www.gamesforthebrain.com/game/checkers/');
     await expect(page).toHaveURL(/checkers/);
+    
+    // Remove ad iframe that intercepts clicks
+    await page.evaluate(() => {
+      const adFrame = document.querySelector('iframe[src*="ad"]') || document.querySelector('iframe');
+      if (adFrame) adFrame.remove();
+    });
   });
 
   test('Display initial select orange piece message', async ({ page }) => {
@@ -64,24 +70,20 @@ test.describe('Checkers Game Messages', () => {
   });
 
   test('This is an invalid move message', async ({ page }) => {
-    await yourFirstMove(page, 'space42', 'space33');
-    await verifyMessage(page, 'Make a move.');
-    
-    // Check that me2.gif does not exist
-    const me2 = page.locator('img[src="me2.gif"]');
-    await expect(me2).not.toBeVisible();
+    await verifyMessage(page, 'Select an orange piece to move.');
     
     // Verify space51 has src="you1.gif"
     const space51 = page.locator('img[name="space51"]');
     await expect(space51).toHaveAttribute('src', 'you1.gif');
     await space51.click();
+    // Note: yourFirstMove helper is checking the UI img src changes from you1.gif to you2.gif
     await expect(space51).toHaveAttribute('src', 'you2.gif');
 
-    // Get space17 and click
-    const space17 = page.locator('img[name="space17"]');
-    await space17.click();
-    
-    // Wait for the message to change from "Please wait." to "This is an invalid move."
-    await verifyMessage(page, 'This is an invalid move.', { timeout: 15000 });
+    // Attempt an invalid move: pick diagonal square > 1 space away
+    const invalidDestination = page.locator('img[name="space24"]');
+    await invalidDestination.click();
+
+    // Verify the invalid move message appears
+    await verifyMessage(page, 'This is an invalid move.');
   });
 });

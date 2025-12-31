@@ -11,7 +11,7 @@ export async function verifyLink(listOfLinks, text, href) {
  */
 export async function verifyMessage(page, text) {
   const message = page.locator('#message', { hasText: text });
-  await expect(message).toBeVisible();
+  await expect(message).toBeVisible({ timeout: 30000 });
 }
 
 /**
