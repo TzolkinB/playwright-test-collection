@@ -4,7 +4,10 @@ import { verifyMessage, yourFirstMove } from './helpers';
 
 test.describe('Checkers Game Messages', () => {
   test.beforeEach(async ({ page }) => {
+    const startTime = Date.now();
     await page.goto('https://www.gamesforthebrain.com/game/checkers/');
+    const loadTime = Date.now() - startTime;
+    console.log(`Page loaded in ${loadTime}ms`);
     await expect(page).toHaveURL(/checkers/);
     
     // Remove ad iframe that intercepts clicks
@@ -62,8 +65,8 @@ test.describe('Checkers Game Messages', () => {
     await space33.click();
     
     // Get space53 and click
-    const space53 = page.locator('img[name="space53"]');
-    await space53.click();
+    const space42 = page.locator('img[name="space42"]');
+    await space42.dblclick();
     
     // Verify Please wait message
     await verifyMessage(page, 'Please wait.');

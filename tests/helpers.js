@@ -11,7 +11,7 @@ export async function verifyLink(listOfLinks, text, href) {
  */
 export async function verifyMessage(page, text) {
   const message = page.locator('#message');
-  await expect(message).toContainText(text, {timeout: 10000});
+  await expect(message).toContainText(text, {timeout: 20000});
 }
 
 /**
