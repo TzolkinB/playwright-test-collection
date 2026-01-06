@@ -21,11 +21,12 @@ jobs:
         with:
           node-version: lts/*
           cache: "npm"
-      - name: Cache Playwright browsers
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      # Caching browser binaries is not recommended by Playwright team
+      # - name: Cache Playwright browsers
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: ~/.cache/ms-playwright
+      #     key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
       - name: Install dependencies
         run: npm ci
       - name: Install Playwright Browsers

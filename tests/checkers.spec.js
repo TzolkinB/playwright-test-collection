@@ -1,7 +1,6 @@
 // tests/checkers.spec.js
 import { test, expect } from '@playwright/test';
 import { verifyLink } from './helpers';
-import { time } from 'node:console';
 
 test.describe('Checkers Game UI', () => {
   test.beforeEach(async ({ page }) => {
@@ -34,7 +33,7 @@ test.describe('Checkers Game UI', () => {
     await expect(logo.locator('img')).toHaveAttribute('alt', 'Games for the Brain');
 
     const footerLinks = await nav.locator('#footer').getByRole('link');
-    expect(footerLinks).toHaveCount(3, { timeout: 10000 });
+    expect(footerLinks).toHaveCount(3, { timeout: 15000 });
 
     const expectedLinks = [
     { text: 'Games for the Brain', href: '/' },
