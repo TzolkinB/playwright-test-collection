@@ -1,7 +1,6 @@
 // tests/checkers.spec.js
 import { test, expect } from '@playwright/test';
 import { verifyLink } from './helpers';
-import { time } from 'node:console';
 
 test.describe('Checkers Game UI', () => {
   test.beforeEach(async ({ page }) => {

@@ -3,15 +3,15 @@ import { expect } from '@playwright/test';
 
 export async function verifyLink(listOfLinks, text, href) {
   const link = listOfLinks.filter({ hasText: text });
-  await expect(link).toHaveAttribute('href', href);
+  await expect(link).toHaveAttribute('href', href, { timeout: 10000 });
 }
 
 /**
  * Assert that a message appears
  */
 export async function verifyMessage(page, text) {
-  const message = page.locator('#message', { hasText: text });
-  await expect(message).toBeVisible({ timeout: 50000 });
+  const message = page.locator('#message');
+  await expect(message).toContainText(text, {timeout: 10000});
 }
 
 /**
