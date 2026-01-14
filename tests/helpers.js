@@ -11,7 +11,7 @@ export async function verifyLink(listOfLinks, text, href) {
  */
 export async function verifyMessage(page, text) {
   const message = page.locator('#message');
-  await expect(message).toContainText(text, {timeout: 20000});
+  await expect(message).toContainText(text, { timeout: 5000 });
 }
 
 /**
@@ -23,9 +23,12 @@ export async function yourFirstMove(page, from, to) {
   
   await expect(selectedPiece).toHaveAttribute('src', 'you1.gif')
   await selectedPiece.click();
-  await expect(selectedPiece).toHaveAttribute('src', 'you2.gif')
+  await expect(selectedPiece).toHaveAttribute('src', 'you2.gif');
   
   // Destination square should become available
-  await expect(moveTo).toHaveAttribute('src', 'gray.gif')
+  await expect(moveTo).toHaveAttribute('src', 'gray.gif');
   await moveTo.click();
+
+  // Wait for game to process move
+  await expect(page.locator('#message')).toContainText('Make a move.', { timeout: 3000 });
 }
