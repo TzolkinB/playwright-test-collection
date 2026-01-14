@@ -1,13 +1,7 @@
-// tests/checkers.spec.js
-import { test, expect } from '@playwright/test';
+import { test, expect } from './fixtures';
 import { verifyLink } from './helpers';
 
 test.describe('Checkers Game UI', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto('https://www.gamesforthebrain.com/game/checkers/');
-    await expect(page).toHaveURL(/checkers/);
-  });
-
   test('Should have header, board & correct links', async ({ page, request }) => {
     const rulesHref = "https://en.wikipedia.org/wiki/English_draughts#Starting_position"
     await expect(page.getByRole('heading', { level: 1, name: 'Checkers' })).toBeVisible();
@@ -33,16 +27,16 @@ test.describe('Checkers Game UI', () => {
     await expect(logo.locator('img')).toHaveAttribute('alt', 'Games for the Brain');
 
     const footerLinks = await nav.locator('#footer').getByRole('link');
-    expect(footerLinks).toHaveCount(3, { timeout: 15000 });
+    await expect(footerLinks).toHaveCount(3, { timeout: 15000 });
 
     const expectedLinks = [
-    { text: 'Games for the Brain', href: '/' },
-    { text: 'Bonus Room', href: '/bonus/' },
-    { text: 'About', href: '/about/' },
-  ];
+      { text: 'Games for the Brain', href: '/' },
+      { text: 'Bonus Room', href: '/bonus/' },
+      { text: 'About', href: '/about/' },
+    ];
 
-    expectedLinks.forEach(async (link) => {
+    for (const link of expectedLinks) {
       await verifyLink(footerLinks, link.text, link.href);
-    })
+    }
   });
-})
+});

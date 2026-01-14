@@ -1,4 +1,3 @@
-// tests/deckofcards.spec.js
 import { test, expect } from '@playwright/test';
 
 const base = 'https://www.deckofcardsapi.com';
