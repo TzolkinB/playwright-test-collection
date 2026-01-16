@@ -1,9 +1,8 @@
-// tests/helpers.js
 import { expect } from '@playwright/test';
 
 export async function verifyLink(listOfLinks, text, href) {
   const link = listOfLinks.filter({ hasText: text });
-  await expect(link).toHaveAttribute('href', href, { timeout: 10000 });
+  await expect(link).toHaveAttribute('href', href, { timeout: 5000 });
 }
 
 /**
@@ -28,4 +27,7 @@ export async function yourFirstMove(page, from, to) {
   // Destination square should become available
   await expect(moveTo).toHaveAttribute('src', 'gray.gif')
   await moveTo.click();
+
+  // Wait for game to process move
+  await expect(page.locator('#message')).toContainText('Make a move.', { timeout: 3000 });
 }

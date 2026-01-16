@@ -1,22 +1,7 @@
-// tests/checkersMessages.spec.js
-import { test , expect} from '@playwright/test';
+import { test , expect} from './fixtures';
 import { verifyMessage, yourFirstMove } from './helpers';
 
 test.describe('Checkers Game Messages', () => {
-  test.beforeEach(async ({ page }) => {
-    const startTime = Date.now();
-    await page.goto('https://www.gamesforthebrain.com/game/checkers/');
-    const loadTime = Date.now() - startTime;
-    console.log(`Page loaded in ${loadTime}ms`);
-    await expect(page).toHaveURL(/checkers/);
-    
-    // Remove ad iframe that intercepts clicks
-    await page.evaluate(() => {
-      const adFrame = document.querySelector('iframe[src*="ad"]') || document.querySelector('iframe');
-      if (adFrame) adFrame.remove();
-    });
-  });
-
   test('Display initial select orange piece message', async ({ page }) => {
     await verifyMessage(page, 'Select an orange piece to move.');
   });
@@ -26,20 +11,17 @@ test.describe('Checkers Game Messages', () => {
     await verifyMessage(page, 'Click on your orange piece, then click where you want to move it.');
   });
 
-  test('Message “Make a move.” after a valid move', async ({ page }) => {
-    // following fails due to element not found
+  test('“Make a move.” message after a valid move', async ({ page }) => {
+    // Last step of yourFirstMove verifies this message
     await yourFirstMove(page, 'space42', 'space33');
-    await verifyMessage(page, 'Make a move.');
   });
-  test('Move diagonally only message', async ({ page }) => {
+  test('"Move diagonally only." message', async ({ page }) => {
     await yourFirstMove(page, 'space42', 'space33');
-    await verifyMessage(page, 'Make a move.');
-    
-    // Brief wait for game to process
-    await page.waitForTimeout(500);
     
     // Check that me2.gif does not exist
-    const me2 = page.locator('img[src="me2.gif"]');
+    // Using $ to match the end of the src attribute
+    // <img src="https://www.gamesforthebrain.com/game/checkers/me2.gif"></img>
+    const me2 = page.locator('img[src$="me2.gif"]');
     await expect(me2).not.toBeVisible();
     
     // Verify space33 has src="you1.gif"
@@ -57,7 +39,6 @@ test.describe('Checkers Game Messages', () => {
 
   test('Please wait message', async ({ page }) => {
     await yourFirstMove(page, 'space42', 'space33');
-    await verifyMessage(page, 'Make a move.');
     
     // Verify space33 has src="you1.gif"
     const space33 = page.locator('img[name="space33"]');
