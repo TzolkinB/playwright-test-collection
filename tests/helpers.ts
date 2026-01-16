@@ -1,12 +1,21 @@
 import { expect, Locator, Page } from '@playwright/test'
 
+/**
+ * Verify link names and url
+ * @param {Locator} listOfLinks - playwright Locator
+ * @param {string} text - link text
+ * @param {string} href - href of link
+ */
 export async function verifyLink(listOfLinks: Locator, text: string, href: string) {
   const link = listOfLinks.filter({ hasText: text })
   await expect(link).toHaveAttribute('href', href, { timeout: 5000 })
 }
 
 /**
- * Assert that a message appears
+ * Verifies that a specific message is displayed
+ * Note: messages are dynamic
+ * @param {Page} page - represents browser page in playwright
+ * @param {string} text - message text content
  */
 export async function verifyMessage(page: Page, text: string) {
   const message = page.locator('#message')
@@ -14,7 +23,10 @@ export async function verifyMessage(page: Page, text: string) {
 }
 
 /**
- * Assert image user sees changes as they make their first move
+ * Verify image of checker piece user sees changes as they make their first move
+ * @param {Page} page - represents browser page in playwright
+ * @param {string} from - current checkerboard square location
+ * @param {string} to - new checkerboard square location
  */
 export async function yourFirstMove(page: Page, from: string, to: string) {
   const selectedPiece = page.locator(`img[name="${from}"]`)
