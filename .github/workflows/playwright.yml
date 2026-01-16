@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [main, master]
   schedule:
-    - cron: "0 2 * * 0"
+    - cron: '0 2 * * 0'
 
 permissions:
   contents: read
@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          cache: "npm"
+          cache: 'npm'
       # Caching browser binaries is not recommended by Playwright team
       # - name: Cache Playwright browsers
       #   uses: actions/cache@v4

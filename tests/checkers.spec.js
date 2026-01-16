@@ -1,42 +1,42 @@
-import { test, expect } from './fixtures';
-import { verifyLink } from './helpers';
+import { test, expect } from './fixtures'
+import { verifyLink } from './helpers'
 
 test.describe('Checkers Game UI', () => {
   test('Should have header, board & correct links', async ({ page, request }) => {
-    const rulesHref = "https://en.wikipedia.org/wiki/English_draughts#Starting_position"
-    await expect(page.getByRole('heading', { level: 1, name: 'Checkers' })).toBeVisible();
+    const rulesHref = 'https://en.wikipedia.org/wiki/English_draughts#Starting_position'
+    await expect(page.getByRole('heading', { level: 1, name: 'Checkers' })).toBeVisible()
 
-    const board = page.locator('.content').locator('#board');
-    await expect(board.locator('img[src="you1.gif"]')).toHaveCount(12); // Player pieces
+    const board = page.locator('.content').locator('#board')
+    await expect(board.locator('img[src="you1.gif"]')).toHaveCount(12) // Player pieces
 
-    const boardLinks = page.locator('.footnote').getByRole('link');
-    await expect(boardLinks).toHaveCount(2);
+    const boardLinks = page.locator('.footnote').getByRole('link')
+    await expect(boardLinks).toHaveCount(2)
     await verifyLink(boardLinks, 'Restart...', './')
     await verifyLink(boardLinks, 'Rules', rulesHref)
 
-    await request.get(rulesHref).then(response => {
-      expect(response.status()).toBe(200);
-    });
+    await request.get(rulesHref).then((response) => {
+      expect(response.status()).toBe(200)
+    })
 
     // Navigation assertions
-    const nav = page.locator('#navigation');
+    const nav = page.locator('#navigation')
     const logo = await nav.locator('.mainLogo')
-    await expect(logo.locator('a')).toHaveAttribute('href', '/');
+    await expect(logo.locator('a')).toHaveAttribute('href', '/')
 
-    await expect(logo.locator('img')).toHaveAttribute('src', '/image/logo.png');
-    await expect(logo.locator('img')).toHaveAttribute('alt', 'Games for the Brain');
+    await expect(logo.locator('img')).toHaveAttribute('src', '/image/logo.png')
+    await expect(logo.locator('img')).toHaveAttribute('alt', 'Games for the Brain')
 
-    const footerLinks = await nav.locator('#footer').getByRole('link');
-    await expect(footerLinks).toHaveCount(3, { timeout: 10000 });
+    const footerLinks = await nav.locator('#footer').getByRole('link')
+    await expect(footerLinks).toHaveCount(3, { timeout: 10000 })
 
     const expectedLinks = [
-    { text: 'Games for the Brain', href: '/' },
-    { text: 'Bonus Room', href: '/bonus/' },
-    { text: 'About', href: '/about/' },
-    ];
+      { text: 'Games for the Brain', href: '/' },
+      { text: 'Bonus Room', href: '/bonus/' },
+      { text: 'About', href: '/about/' },
+    ]
 
     for (const link of expectedLinks) {
-      await verifyLink(footerLinks, link.text, link.href);
+      await verifyLink(footerLinks, link.text, link.href)
     }
-  });
+  })
 })
