@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test:e2e": "playwright test",
+    "pretest": "tsc --noEmit && eslint tests/**",
+    "test": "playwright test",
+    "lint": "eslint .",
     "prepare": "husky"
   },
   "keywords": [],

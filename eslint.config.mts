@@ -8,13 +8,15 @@ export default defineConfig([
     files: ['**/*.{ts,mts,cts}'],
     plugins: { js },
     extends: ['js/recommended'],
-    // languageOptions: { globals: {...globals.browser, ...globals.node} } },
     languageOptions: {
       parserOptions: {
-        project: '.tsconfig.json',
+        project: 'tsconfig.json',
       },
     },
-    rules: {},
+    rules: {
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/await-thenable': 'error',
+    },
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,

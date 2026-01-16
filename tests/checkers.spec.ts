@@ -20,13 +20,13 @@ test.describe('Checkers Game UI', () => {
 
     // Navigation assertions
     const nav = page.locator('#navigation')
-    const logo = await nav.locator('.mainLogo')
+    const logo = nav.locator('.mainLogo')
     await expect(logo.locator('a')).toHaveAttribute('href', '/')
 
     await expect(logo.locator('img')).toHaveAttribute('src', '/image/logo.png')
     await expect(logo.locator('img')).toHaveAttribute('alt', 'Games for the Brain')
 
-    const footerLinks = await nav.locator('#footer').getByRole('link')
+    const footerLinks = nav.locator('#footer').getByRole('link')
     await expect(footerLinks).toHaveCount(3, { timeout: 10000 })
 
     const expectedLinks = [
