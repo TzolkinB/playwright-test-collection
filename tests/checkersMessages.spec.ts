@@ -1,5 +1,5 @@
 import { test, expect } from './fixtures'
-import { verifyMessage, yourFirstMove } from './helpers'
+import { computerActive, verifyMessage, yourMove } from './helpers'
 
 test.describe('Checkers Game Messages', () => {
   test('Display initial select orange piece message', async ({ page }) => {
@@ -13,16 +13,12 @@ test.describe('Checkers Game Messages', () => {
 
   test('“Make a move.” message after a valid move', async ({ page }) => {
     // Last step of yourFirstMove verifies this message
-    await yourFirstMove(page, 'space42', 'space33')
+    await yourMove(page, 'space42', 'space33')
   })
   test('"Move diagonally only." message', async ({ page }) => {
-    await yourFirstMove(page, 'space42', 'space33')
+    await yourMove(page, 'space42', 'space33')
 
-    // Check that me2.gif does not exist
-    // Using $ to match the end of the src attribute
-    // <img src="https://www.gamesforthebrain.com/game/checkers/me2.gif"></img>
-    const me2 = page.locator('img[src$="me2.gif"]')
-    await expect(me2).not.toBeVisible()
+    await expect(computerActive(page)).not.toBeVisible()
 
     // Verify space33 has src="you1.gif"
     const space33 = page.locator('img[name="space33"]')
@@ -38,7 +34,7 @@ test.describe('Checkers Game Messages', () => {
   })
 
   test('Please wait message', async ({ page }) => {
-    await yourFirstMove(page, 'space42', 'space33')
+    await yourMove(page, 'space42', 'space33')
 
     // Verify space33 has src="you1.gif"
     const space33 = page.locator('img[name="space33"]')

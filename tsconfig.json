@@ -7,7 +7,7 @@
     "allowJs": true, // Allows JavaScript files to be compiled alongside TypeScript files.
     "target": "es6", // Specifies the ECMAScript target version
     "module": "NodeNext", // Sets the module system to use (commonjs, nodenext, esnext)
-    "lib": ["es2024"], // Specifies the library files to be included in the compilation.
+    "lib": ["es2024", "DOM"], // Specifies the library files to be included in the compilation.
     "sourceMap": true, // Generates source maps for debugging
     "skipLibCheck": true, // Skips type checking of declaration files
     "noUnusedParameters": false, // Do not allow unused parameters in functions.

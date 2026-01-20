@@ -8,11 +8,12 @@ export const test = base.extend<{ checkersPage: void }>({
       await page.goto('https://www.gamesforthebrain.com/game/checkers/', {})
 
       // Remove ad iframe immediately
-      await page.evaluate(() => {
-        const adFrame =
-          document.querySelector('iframe[src*="ad"]') || document.querySelector('iframe')
-        if (adFrame) adFrame.remove()
-      })
+      const adIframe = page.locator('iframe[src*="ad"]')
+      await adIframe
+        .evaluate((node) => node.remove())
+        .catch((error) => {
+          console.error('An error occured:', error.message)
+        })
 
       await expect(page).toHaveURL(/checkers/)
 
@@ -22,7 +23,7 @@ export const test = base.extend<{ checkersPage: void }>({
       await use()
     },
     // Makes the fixture automatic
-    // fixyure is set up for each test/worker without having to list it directly
+    // fixture is set up for each test/worker without having to list it directly
     { auto: true },
   ],
 })

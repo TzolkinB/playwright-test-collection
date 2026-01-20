@@ -1,5 +1,10 @@
 import { expect, Locator, Page } from '@playwright/test'
 
+// Check that me2.gif does not exist
+// Using $ to match the end of the src attribute
+// <img src="https://www.gamesforthebrain.com/game/checkers/me2.gif"></img>
+export const computerActive = (page: Page) => page.locator('img[src$="me2.gif"]')
+
 /**
  * Verify link names and url
  * @param {Locator} listOfLinks - playwright Locator
@@ -28,17 +33,20 @@ export async function verifyMessage(page: Page, text: string) {
  * @param {string} from - current checkerboard square location
  * @param {string} to - new checkerboard square location
  */
-export async function yourFirstMove(page: Page, from: string, to: string) {
+export async function yourMove(page: Page, from: string, to: string) {
   const selectedPiece = page.locator(`img[name="${from}"]`)
   const moveTo = page.locator(`img[name="${to}"]`)
+  const userActivePiece = page.locator('img[src$="you2.gif"]')
 
   await expect(selectedPiece).toHaveAttribute('src', 'you1.gif')
   await selectedPiece.click()
   await expect(selectedPiece).toHaveAttribute('src', 'you2.gif')
 
-  // Destination square should become available
+  // Destination square should be available
   await expect(moveTo).toHaveAttribute('src', 'gray.gif')
   await moveTo.click()
+
+  await expect(userActivePiece).not.toBeVisible()
 
   // Wait for game to process move
   await expect(page.locator('#message')).toContainText('Make a move.', {
