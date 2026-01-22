@@ -53,9 +53,19 @@ jobs:
 
       - name: Run changed Playwright tests
         if: github.event_name == 'pull_request'
+        timeout-minutes: 2
         run: |
           git fetch origin ${{ github.base_ref }} || true
-          npx playwright test --only-changed=origin/${{ github.base_ref }}
+
+          CHANGED_COUNT=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep -E '\.(spec|test)\.(ts|js)$' | wc -l))
+
+          if [ "$CHANGED_COUNT" -gt 0 ]; then
+            echo "Found $CHANGED_COUNT changed test file(s)"
+            npx playwright test --only-changed=origin/${{ github.base_ref }}
+          else
+            echo "No test files changed - skipping"
+            exit 0
+          fi
         continue-on-error: true # Allow workflow to continue if failure
       - name: Run Playwright tests
         run: npx playwright test
