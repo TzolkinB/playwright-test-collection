@@ -1,0 +1,22 @@
+[
+  {
+    "rule": "color-contrast",
+    "targets": [
+      [
+        "#partnerGamesHeadline"
+      ],
+      [
+        "#footer"
+      ],
+      [
+        "#footer > a[href=\"/\"]"
+      ],
+      [
+        "a[href$=\"bonus/\"]"
+      ],
+      [
+        "a[href$=\"about/\"]"
+      ]
+    ]
+  }
+]
