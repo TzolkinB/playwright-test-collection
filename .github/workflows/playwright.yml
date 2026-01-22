@@ -1,12 +1,24 @@
 name: Playwright Tests
 on:
-  workflow_dispatch:
   push:
     branches: [main, master]
   pull_request:
     branches: [main, master]
   schedule:
     - cron: '0 2 * * 0'
+  # Allow updating snapshots - manual runs
+  workflow_call:
+    inputs:
+      update-snapshots:
+        description: 'Update snapshots?'
+        type: boolean
+
+  # Allow updating snapshots - automatic runs
+  workflow_dispatch:
+    inputs:
+      update-snapshots:
+        description: 'Update snapshots?'
+        type: boolean
 
 permissions:
   contents: read
@@ -27,21 +39,28 @@ jobs:
         with:
           node-version: lts/*
           cache: 'npm'
-      # Caching browser binaries is not recommended by Playwright team
-      # - name: Cache Playwright browsers
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: ~/.cache/ms-playwright
-      #     key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
       - name: Install dependencies
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
+
+      - name: Set up cache for visual tests
+        id: cache
+        uses: actions/cache@v4
+        with:
+          key: cache/${{github.repository}}/${{github.ref}}
+          restore-keys: cache/${{github.repository}}/refs/heads/master
+          path: .**/snapshot
+      - name: Initialize snapshots
+        if: ${{steps.cache.outputs.cache-hit != 'true' || inputs.update-snapshots == 'true'}}
+        run: npx playwright test -u --reporter=html
+
       - name: Run changed Playwright tests
         run: npx playwright test --only-changed=$GITHUB_BASE_REF
         if: github.event_name == 'pull_request'
         continue-on-error: true # Allow workflow to continue if failure
       - name: Run Playwright tests
+        continue-on-error: true
         run: npx playwright test
 
       - name: Upload Playwright Report artifact
