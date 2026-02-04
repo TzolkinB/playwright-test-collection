@@ -64,4 +64,18 @@ test.describe('Checkers Game UI', () => {
   // cam be done in 4 moves
 
   //TODO: test all 35? game links in "#nagivation > .mainNavigation"
+
+  test('Blue Jumps Orange', async ({ page }) => {
+    const bluePiece = (movedTo: string) => page.locator(`img[name="${movedTo}"]`)
+    await yourMove(page, 'space22', 'space33')
+    await expect(computerActive(page)).not.toBeVisible()
+
+    await expect(bluePiece('space04')).toHaveAttribute('src', 'me1.gif')
+
+    await yourMove(page, 'space02', 'space13')
+    await expect(computerActive(page)).not.toBeVisible()
+
+    await expect(bluePiece('space22')).toHaveAttribute('src', 'me1.gif')
+    await expect(page.locator('img[name="space13"]')).toHaveAttribute('src', 'gray.gif')
+  })
 })
