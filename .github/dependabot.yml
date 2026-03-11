@@ -1,0 +1,29 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  # NPM dependencies - weekly to avoid timeout issues
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    # Avoid complex grouping that causes timeouts
+    # Allow patch and minor updates only (faster dependency resolution)
+    allow:
+      - dependency-type: "direct"
+    # Rebase PRs to speed up dependency resolution
+    rebase-strategy: "auto"
+    # Limit to 5 open PRs
+    open-pull-requests-limit: 5
+
+  # GitHub Actions - alerts only, no auto-updates
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    # This will check for updates but not auto-create PRs
+    # You'll see notifications if there are available updates
