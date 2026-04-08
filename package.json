@@ -27,5 +27,8 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
+  },
+  "dependencies": {
+    "eslint-plugin-playwright": "^2.10.1"
   }
 }
