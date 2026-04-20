@@ -29,6 +29,6 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
-    "eslint-plugin-playwright": "^2.10.1"
+    "eslint-plugin-playwright": "^2.10.2"
   }
 }
