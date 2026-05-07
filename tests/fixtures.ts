@@ -8,12 +8,12 @@ export const test = base.extend<{ checkersPage: void }>({
       await page.goto('https://www.gamesforthebrain.com/game/checkers/', {})
 
       // Remove ad iframe immediately
-      const adIframe = page.locator('iframe[src*="ad"]')
-      await adIframe
-        .evaluate((node) => node.remove())
-        .catch((error) => {
-          console.error('An error occured:', error.message)
-        })
+      // const adIframe = page.locator('iframe[src*="ad"]')
+      // await adIframe
+      //   .evaluate((node) => node.remove())
+      //   .catch((error) => {
+      //     console.error('An error occured:', error.message)
+      //   })
 
       await expect(page).toHaveURL(/checkers/)
 
