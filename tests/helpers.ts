@@ -46,7 +46,7 @@ export async function yourMove(page: Page, from: string, to: string) {
   await expect(moveTo).toHaveAttribute('src', 'gray.gif')
   await moveTo.click()
 
-  await expect(userActivePiece).not.toBeVisible()
+  await expect(userActivePiece).toBeHidden()
 
   // Wait for game to process move
   await expect(page.locator('#message')).toContainText('Make a move.', {

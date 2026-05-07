@@ -15,10 +15,11 @@ test.describe('Checkers Game Messages', () => {
     // Last step of yourFirstMove verifies this message
     await yourMove(page, 'space42', 'space33')
   })
+
   test('"Move diagonally only." message', async ({ page }) => {
     await yourMove(page, 'space42', 'space33')
 
-    await expect(computerActive(page)).not.toBeVisible()
+    await expect(computerActive(page)).toBeHidden()
 
     // Verify space33 has src="you1.gif"
     const space33 = page.locator('img[name="space33"]')

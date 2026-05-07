@@ -25,6 +25,13 @@ export default defineConfig([
   {
     files: ['tests/**/*.{ts,js}'],
     ...eslintPluginPlaywright.configs['flat/recommended'],
+    rules: {
+      ...eslintPluginPlaywright.configs['flat/recommended'].rules,
+      'playwright/expect-expect': [
+        'warn',
+        { assertFunctionNames: ['verifyMessage', 'verifyLink', 'yourMove'] },
+      ],
+    },
   },
   // Ensure Prettier applies to ALL files
   {

@@ -36,7 +36,7 @@ test.describe('Deck of Cards API', () => {
     const draw12 = await request.get(`${base}/api/deck/${deckID}/draw/?count=12`)
     const { cards, remaining: remainingAfterDraw } = await draw12.json()
     await successStatusObjBody(draw12)
-    expect(cards.length).toBe(12)
+    expect(cards).toHaveLength(12)
     expect(remainingAfterDraw).toBe(40)
 
     // STEP 3: Test "add to pile" API by selecting 8 cards from the 12 drawn
@@ -91,7 +91,7 @@ test.describe('Deck of Cards API', () => {
     const { cards: drawnFromPile, piles: remainingPile } = await drawFromPile.json()
     await successStatusObjBody(drawFromPile)
 
-    expect(drawnFromPile.length).toBe(2)
+    expect(drawnFromPile).toHaveLength(2)
     expect(remainingPile.my_pile.remaining).toBe(6)
 
     // Verify the bottom 2 cards of shuffled pile match what was drawn

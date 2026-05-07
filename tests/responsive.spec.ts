@@ -3,6 +3,7 @@ import { test, expect, devices } from '@playwright/test'
 // Playwright excels at device emulation
 test.use({ ...devices['iPhone 13'] })
 
+// eslint-disable-next-line playwright/no-skipped-test
 test.skip('responsive layout on mobile', async ({ page }) => {
   // const moveTo = page.locator(`img[src="${to}"]`)
   await page.goto('/dashboard')
