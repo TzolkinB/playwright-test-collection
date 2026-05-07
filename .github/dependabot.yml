@@ -5,16 +5,36 @@
 
 version: 2
 updates:
-  # NPM dependencies - weekly to avoid timeout issues
+  # NPM dependencies - weekly with grouped updates
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "monday"
-    # Avoid complex grouping that causes timeouts
+    # Three separate groups: minor+patch grouped, major separated, security separated
+    groups:
+      minor-and-patch:
+        patterns:
+          - "*"
+        update-types:
+        - "minor"
+        - "patch"
+      major-updates:
+        patterns:
+          - "*"
+        update-types:
+          - "major"
+      security-updates:
+        patterns:
+          - "*"
+        applies-to: "security-updates"
     # Allow patch and minor updates only (faster dependency resolution)
     allow:
-      - dependency-type: "direct"
+      - dependency-type: "all"
+        update-types:
+          - "version-update:semver-patch"
+          - "version-update:semver-minor"
+          - "version-update:semver-major"
     # Rebase PRs to speed up dependency resolution
     rebase-strategy: "auto"
     # Limit to 5 open PRs
@@ -25,5 +45,3 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
-    # This will check for updates but not auto-create PRs
-    # You'll see notifications if there are available updates
