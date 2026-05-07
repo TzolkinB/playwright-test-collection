@@ -2,9 +2,9 @@ name: Playwright Tests
 on:
   workflow_dispatch:
   push:
-    branches: [main, master]
+    branches: [master]
   pull_request:
-    branches: [main, master]
+    branches: [master]
   schedule:
     - cron: '0 2 * * 0'
 
@@ -17,23 +17,28 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    # Dockerized Playwright runtime for branch-safe, consistent execution on PRs and master.
+    container:
+      image: mcr.microsoft.com/playwright:v1.59.1-jammy
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
           node-version: lts/*
           cache: 'npm'
-      # Caching browser binaries is not recommended by Playwright team
-      # - name: Cache Playwright browsers
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: ~/.cache/ms-playwright
-      #     key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
       - name: Install dependencies
         run: npm ci
-      - name: Install Playwright Browsers
+      # Fast path: container already includes browser binaries and Linux deps.
+      - name: Run Playwright tests (container baseline)
+        id: baseline_test
+        continue-on-error: true
+        run: npx playwright test
+      # Fallback path: only runs when baseline fails, then retries once.
+      - name: Fallback install Playwright Browsers and deps
+        if: steps.baseline_test.outcome == 'failure'
         run: npx playwright install --with-deps
-      - name: Run Playwright tests
+      - name: Re-run Playwright tests after fallback install
+        if: steps.baseline_test.outcome == 'failure'
         run: npx playwright test
 
       - name: Upload Playwright Report artifact
@@ -45,7 +50,7 @@ jobs:
           retention-days: 30
 
   deploy:
-    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master'
     needs: test
     runs-on: ubuntu-latest
     permissions:
