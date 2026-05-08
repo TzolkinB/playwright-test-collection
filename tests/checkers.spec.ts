@@ -45,9 +45,9 @@ test.describe('Checkers Game UI', () => {
   test('Restart game', async ({ page }) => {
     const defaultEmptySpaces = ['73', '53', '33', '13', '64', '44', '24', '04']
     await yourMove(page, 'space42', 'space33')
-    await expect(computerActive(page)).not.toBeVisible()
+    await expect(computerActive(page)).toBeHidden()
     await yourMove(page, 'space33', 'space24')
-    await expect(computerActive(page)).not.toBeVisible()
+    await expect(computerActive(page)).toBeHidden()
     await yourMove(page, 'space62', 'space53')
 
     await page.getByRole('link', { name: 'Restart...' }).click()
