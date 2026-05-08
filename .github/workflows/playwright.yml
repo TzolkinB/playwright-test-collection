@@ -17,9 +17,6 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    # Dockerized Playwright runtime for branch-safe, consistent execution on PRs and master.
-    container:
-      image: mcr.microsoft.com/playwright:v1.59.1-jammy
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -28,17 +25,9 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
-      # Fast path: container already includes browser binaries and Linux deps.
-      - name: Run Playwright tests (container baseline)
-        id: baseline_test
-        continue-on-error: true
-        run: npx playwright test
-      # Fallback path: only runs when baseline fails, then retries once.
-      - name: Fallback install Playwright Browsers and deps
-        if: steps.baseline_test.outcome == 'failure'
+      - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Re-run Playwright tests after fallback install
-        if: steps.baseline_test.outcome == 'failure'
+      - name: Run Playwright tests
         run: npx playwright test
 
       - name: Upload Playwright Report artifact

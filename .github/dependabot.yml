@@ -1,47 +1,40 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
-
 version: 2
 updates:
   # NPM dependencies - weekly with grouped updates
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
-      day: "monday"
-    # Three separate groups: minor+patch grouped, major separated, security separated
+      interval: 'weekly'
+      day: 'monday'
+    # Groups define how Dependabot creates PRs for different update types
     groups:
+      # minor + patch updates in one PR
+      # applies-to is version updated by default so does not need to be specified
       minor-and-patch:
         patterns:
-          - "*"
+          - '*'
         update-types:
-        - "minor"
-        - "patch"
+          - 'minor'
+          - 'patch'
+      # major updates get individual PR
       major-updates:
         patterns:
-          - "*"
+          - '*'
         update-types:
-          - "major"
+          - 'major'
+      # security updates get individual PR and are labeled as security updates
+      # applies-to: "security-updates" ensures this only applies to security vulnerabilities
       security-updates:
         patterns:
-          - "*"
-        applies-to: "security-updates"
-    # Allow patch and minor updates only (faster dependency resolution)
-    allow:
-      - dependency-type: "all"
-        update-types:
-          - "version-update:semver-patch"
-          - "version-update:semver-minor"
-          - "version-update:semver-major"
+          - '*'
+        applies-to: 'security-updates'
     # Rebase PRs to speed up dependency resolution
-    rebase-strategy: "auto"
-    # Limit to 5 open PRs
+    rebase-strategy: 'auto'
+    # Maximum of 5 open PRs at any time
     open-pull-requests-limit: 5
 
   # GitHub Actions - alerts only, no auto-updates
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: 'github-actions'
+    directory: '/'
     schedule:
-      interval: "monthly"
+      interval: 'monthly'
