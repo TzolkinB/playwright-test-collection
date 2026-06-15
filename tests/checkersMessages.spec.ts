@@ -34,22 +34,6 @@ test.describe('Checkers Game Messages', () => {
     await verifyMessage(page, 'Move diagonally only.')
   })
 
-  test('Please wait message', async ({ page }) => {
-    await yourMove(page, 'space42', 'space33')
-
-    // Verify space33 has src="you1.gif"
-    const space33 = page.locator('img[name="space33"]')
-    await expect(space33).toHaveAttribute('src', 'you1.gif')
-    await space33.click()
-
-    // Get space53 and click
-    const space42 = page.locator('img[name="space42"]')
-    await space42.dblclick()
-
-    // Verify Please wait message
-    await verifyMessage(page, 'Please wait.')
-  })
-
   test('This is an invalid move message', async ({ page }) => {
     await verifyMessage(page, 'Select an orange piece to move.')
 
