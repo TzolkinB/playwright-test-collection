@@ -15,7 +15,8 @@
     "noPropertyAccessFromIndexSignature": true, // This setting enforces that properties accessed via dot notation must be explicitly defined in the type.
     "allowUnreachableCode": false, // When set to false, this option raises errors for code that is unreachable, meaning it cannot be executed.
     "noFallthroughCasesInSwitch": true, // This option reports errors for switch statement cases that fall through without a break, return, or throw statement.
-    "noErrorTruncation": true // When enabled, this option prevents TypeScript from truncating error messages, providing full details about the error.
+    "noErrorTruncation": true, // When enabled, this option prevents TypeScript from truncating error messages, providing full details about the error.
+    "types": ["node"] // Specifies type declaration files to be included in the compilation, in this case, it includes the Node.js type definitions.
   },
   "include": ["**/*.ts", "**/*.mts"]
 }
