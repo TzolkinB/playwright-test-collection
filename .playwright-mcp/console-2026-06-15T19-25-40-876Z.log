@@ -1,0 +1,244 @@
+[  -54175ms] [LOG] Ad rect: @ https://www.gamesforthebrain.com/game/checkers/:85
+[  -54175ms] [LOG] {x: 820, y: 75, width: 300, height: 600} @ https://www.gamesforthebrain.com/game/checkers/:86
+[  -53869ms] [WARNING] [GPT] PubAdsService.clearTargeting is deprecated, use googletag.setConfig({targeting: ...}) instead.
+https://goo.gle/gpt-message#170 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202606120101/pubads_impl.js?cb=31099135:18
+[  -53776ms] [WARNING]  is not a valid value for uspDnsText @ https://cmp.inmobi.com/tcfv2/56/cmp2.js?referer=www.gamesforthebrain.com:1
+[  -53720ms] [LOG] uspData default usp value based on gpc signal @ https://cmp.inmobi.com/tcfv2/56/cmp2.js?referer=www.gamesforthebrain.com:1
+[  -53720ms] [WARNING] globalPrivacyControl is not available in the browser. Setting usp string as  1N-- @ https://cmp.inmobi.com/tcfv2/56/cmp2.js?referer=www.gamesforthebrain.com:1
+[  -53716ms] [WARNING] Google basic consent is not applicable. @ https://cmp.inmobi.com/tcfv2/56/cmp2.js?referer=www.gamesforthebrain.com:1
+[  -53709ms] [LOG] Visit event sent successfully. @ https://cmp.inmobi.com/tcfv2/56/cmp2.js?referer=www.gamesforthebrain.com:1
+[  -53636ms] [WARNING] [GPT] Slot.getTargeting is deprecated, use Slot.getConfig('targeting') instead.
+https://goo.gle/gpt-message#201 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202606120101/pubads_impl.js?cb=31099135:18
+[  -53574ms] [WARNING] [GPT] Using deprecated googletag.encryptedSignalProviders. Please use googletag.secureSignalProviders instead.
+https://goo.gle/gpt-message#155 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202606120101/pubads_impl.js?cb=31099135:18
+[  -53543ms] [WARNING] [GPT] Using deprecated googletag.encryptedSignalProviders. Please use googletag.secureSignalProviders instead.
+https://goo.gle/gpt-message#155 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202606120101/pubads_impl.js?cb=31099135:18
+[  -51946ms] [ERROR] Error while parsing the 'sandbox' attribute: 'allow-orientation-lock', 'allow-presentation' are invalid sandbox flags. @ https://onetag-sys.com/static/BannerAdBannerPlacement.js?v=0.4.49:0
+[  -51016ms] [TIMEEND] a: 0.007ms @ https://static.adsafeprotected.com/sca.17.6.4.js:31
+[  -51009ms] [TIMEEND] a: 0.004ms @ https://static.adsafeprotected.com/sca.17.6.4.js:31
+[  -49678ms] [ERROR] Error while parsing the 'sandbox' attribute: 'allow-orientation-lock', 'allow-presentation' are invalid sandbox flags. @ https://onetag-sys.com/static/BannerAdBannerPlacement.js?v=0.4.49:0
+[  -24854ms] [ERROR] Error while parsing the 'sandbox' attribute: 'allow-orientation-lock', 'allow-presentation' are invalid sandbox flags. @ https://onetag-sys.com/static/BannerAdBannerPlacement.js?v=0.4.49:0
+[  -24097ms] [TIMEEND] a: 0.002ms @ https://static.adsafeprotected.com/sca.17.6.4.js:31
+[  -23848ms] [TIMEEND] a: 0.002ms @ https://static.adsafeprotected.com/sca.17.6.4.js:31
+[  -22587ms] [ERROR] Error while parsing the 'sandbox' attribute: 'allow-orientation-lock', 'allow-presentation' are invalid sandbox flags. @ https://onetag-sys.com/static/BannerAdBannerPlacement.js?v=0.4.49:0
+[  -22313ms] [ERROR] Blocked https://s.adnxtr.com/2/696173/BESytewMhAikYYmM/challenge.gif?ac=35465258&pc=442729171&cr=239474238&ui=0&cb=5500527&pp=N2883.1972103DOUBLECLICKBIDMANAG&bt=programmatic&ci=696173&si=2710100&pi=641411184&dm=300x250&r1=&dt=6961731463688030969001 from asking for credentials because it is a cross-origin request. @ :0
+[  -22300ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://s.adnxtr.com/2/696173/BESytewMhAikYYmM/challenge.gif?ac=35465258&pc=442729171&cr=239474238&ui=0&cb=5500527&pp=N2883.1972103DOUBLECLICKBIDMANAG&bt=programmatic&ci=696173&si=2710100&pi=641411184&dm=300x250&r1=&dt=6961731463688030969001:0
+[       3ms] Blocked a frame with origin "https://www.gamesforthebrain.com" from accessing a frame with origin "https://s0.2mdn.net". Protocols, domains, and ports must match.
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:16840)
+    at f (https://cadmus2.script.ac/s/fs01/main.js:1:80079)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:98152)
+    at s (https://cadmus2.script.ac/s/fs01/main.js:1:100688)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:100806)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:106751)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:104641)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:107439)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:110664)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:109442)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:56870)
+    at r (https://cadmus2.script.ac/s/fs01/main.js:1:53841)
+    at t (https://cadmus2.script.ac/s/fs01/main.js:1:54102)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:12739)
+[       3ms] Blocked a frame with origin "https://serv-us-1.onetag-sys.com" from accessing a frame with origin "https://s0.2mdn.net". Protocols, domains, and ports must match.
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:16840)
+    at f (https://cadmus2.script.ac/s/fs01/main.js:1:80079)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:98152)
+    at s (https://cadmus2.script.ac/s/fs01/main.js:1:100688)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:100806)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:106751)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:104641)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:107439)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:110664)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:109442)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:56870)
+    at r (https://cadmus2.script.ac/s/fs01/main.js:1:53841)
+    at t (https://cadmus2.script.ac/s/fs01/main.js:1:54102)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54248)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:55351)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:205012)
+    at global code (https://cadmus2.script.ac/s/fs01/main.js:1:205043)
+[    2425ms] [TIMEEND] a: 0.002ms @ https://static.adsafeprotected.com/sca.17.6.4.js:31
+[   27726ms] [ERROR] Error while parsing the 'sandbox' attribute: 'allow-orientation-lock', 'allow-presentation' are invalid sandbox flags. @ https://onetag-sys.com/static/BannerAdBannerPlacement.js?v=0.4.49:0
+[   28318ms] Blocked a frame with origin "https://www.gamesforthebrain.com" from accessing a frame with origin "https://s0.2mdn.net". Protocols, domains, and ports must match.
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:16840)
+    at f (https://cadmus2.script.ac/s/fs01/main.js:1:80079)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:98152)
+    at s (https://cadmus2.script.ac/s/fs01/main.js:1:100688)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:100806)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:106751)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:104641)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:107439)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:110664)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:109442)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:56870)
+    at r (https://cadmus2.script.ac/s/fs01/main.js:1:53841)
+    at t (https://cadmus2.script.ac/s/fs01/main.js:1:54102)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:12739)
+[   28403ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://s.adnxtr.com/2/696173/BESyybQFhAi_cXlH/challenge.gif?ac=35465258&si=2710100&pc=442729171&pi=639717746&cr=225660871&dm=300x250&ui=0&r1=&cb=3613908692&pp=N2883.1972103DOUBLECLICKBIDMANAG&bt=programmatic&dt=6961731463688030969001&ci=696173:0
+[   28629ms] [TIMEEND] a: 0.003ms @ https://static.adsafeprotected.com/sca.17.6.4.js:31
+[   28660ms] [TIMEEND] a: 0.003ms @ https://static.adsafeprotected.com/sca.17.6.4.js:31
+[   53924ms] [ERROR] Error while parsing the 'sandbox' attribute: 'allow-orientation-lock', 'allow-presentation' are invalid sandbox flags. @ https://onetag-sys.com/static/BannerAdBannerPlacement.js?v=0.4.49:0
+[   54295ms] Blocked a frame with origin "https://www.gamesforthebrain.com" from accessing a frame with origin "https://s0.2mdn.net". Protocols, domains, and ports must match.
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:16840)
+    at f (https://cadmus2.script.ac/s/fs01/main.js:1:80079)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:98152)
+    at s (https://cadmus2.script.ac/s/fs01/main.js:1:100688)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:100806)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:106751)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:104641)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:107439)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:110664)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:109442)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:56870)
+    at r (https://cadmus2.script.ac/s/fs01/main.js:1:53841)
+    at t (https://cadmus2.script.ac/s/fs01/main.js:1:54102)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:12739)
+[   54443ms] Blocked a frame with origin "https://www.gamesforthebrain.com" from accessing a frame with origin "https://s0.2mdn.net". Protocols, domains, and ports must match.
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:16840)
+    at f (https://cadmus2.script.ac/s/fs01/main.js:1:80079)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:98152)
+    at s (https://cadmus2.script.ac/s/fs01/main.js:1:100688)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:100806)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:106751)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:104641)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:107439)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:110664)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:109442)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:56870)
+    at r (https://cadmus2.script.ac/s/fs01/main.js:1:53841)
+    at t (https://cadmus2.script.ac/s/fs01/main.js:1:54102)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54248)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:55351)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:205012)
+    at global code (https://cadmus2.script.ac/s/fs01/main.js:1:205043)
+[   54742ms] [TIMEEND] a: 0.004ms @ https://static.adsafeprotected.com/sca.17.6.4.js:31
+[   54761ms] [TIMEEND] a: 0.003ms @ https://static.adsafeprotected.com/sca.17.6.4.js:31
+[   56173ms] [ERROR] Error while parsing the 'sandbox' attribute: 'allow-orientation-lock', 'allow-presentation' are invalid sandbox flags. @ https://onetag-sys.com/static/BannerAdBannerPlacement.js?v=0.4.49:0
+[   80572ms] [ERROR] Error while parsing the 'sandbox' attribute: 'allow-orientation-lock', 'allow-presentation' are invalid sandbox flags. @ https://onetag-sys.com/static/BannerAdBannerPlacement.js?v=0.4.49:0
+[   80649ms] Blocked a frame with origin "https://www.gamesforthebrain.com" from accessing a frame with origin "https://s0.2mdn.net". Protocols, domains, and ports must match.
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:16840)
+    at f (https://cadmus2.script.ac/s/fs01/main.js:1:80079)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:98152)
+    at s (https://cadmus2.script.ac/s/fs01/main.js:1:100688)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:100806)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:106751)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:104641)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:107439)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:110664)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:109442)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:56870)
+    at r (https://cadmus2.script.ac/s/fs01/main.js:1:53841)
+    at t (https://cadmus2.script.ac/s/fs01/main.js:1:54102)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54248)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:55351)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:205012)
+    at global code (https://cadmus2.script.ac/s/fs01/main.js:1:205043)
+[   81019ms] Blocked a frame with origin "https://www.gamesforthebrain.com" from accessing a frame with origin "https://s0.2mdn.net". Protocols, domains, and ports must match.
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:16840)
+    at f (https://cadmus2.script.ac/s/fs01/main.js:1:80079)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:98152)
+    at s (https://cadmus2.script.ac/s/fs01/main.js:1:100688)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:100806)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:106751)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:104641)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:107439)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:110664)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:109442)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:56870)
+    at r (https://cadmus2.script.ac/s/fs01/main.js:1:53841)
+    at t (https://cadmus2.script.ac/s/fs01/main.js:1:54102)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:12739)
+[   81211ms] [TIMEEND] a: 0.003ms @ https://static.adsafeprotected.com/sca.17.6.4.js:31
+[   82856ms] [ERROR] Error while parsing the 'sandbox' attribute: 'allow-orientation-lock', 'allow-presentation' are invalid sandbox flags. @ https://onetag-sys.com/static/BannerAdBannerPlacement.js?v=0.4.49:0
+[   83062ms] Blocked a frame with origin "https://serv-us-1.onetag-sys.com" from accessing a frame with origin "https://s0.2mdn.net". Protocols, domains, and ports must match.
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:16840)
+    at f (https://cadmus2.script.ac/s/fs01/main.js:1:80079)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:98152)
+    at s (https://cadmus2.script.ac/s/fs01/main.js:1:100688)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:100806)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:106751)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:104641)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:107439)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:110664)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:109442)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:56870)
+    at r (https://cadmus2.script.ac/s/fs01/main.js:1:53841)
+    at t (https://cadmus2.script.ac/s/fs01/main.js:1:54102)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54248)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:55351)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:205012)
+    at global code (https://cadmus2.script.ac/s/fs01/main.js:1:205043)
+[  106345ms] Blocked a frame with origin "https://www.gamesforthebrain.com" from accessing a frame with origin "https://s0.2mdn.net". Protocols, domains, and ports must match.
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:16840)
+    at f (https://cadmus2.script.ac/s/fs01/main.js:1:80079)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:98152)
+    at s (https://cadmus2.script.ac/s/fs01/main.js:1:100688)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:100806)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:106751)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:104641)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:107439)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:110664)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:109442)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:56870)
+    at r (https://cadmus2.script.ac/s/fs01/main.js:1:53841)
+    at t (https://cadmus2.script.ac/s/fs01/main.js:1:54102)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:12739)
+[  106747ms] Blocked a frame with origin "https://www.gamesforthebrain.com" from accessing a frame with origin "https://s0.2mdn.net". Protocols, domains, and ports must match.
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:16840)
+    at f (https://cadmus2.script.ac/s/fs01/main.js:1:80079)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:98152)
+    at s (https://cadmus2.script.ac/s/fs01/main.js:1:100688)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:100806)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:106751)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:104641)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:107439)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:110664)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54293)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54464)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:109442)
+    at Ph (https://cadmus2.script.ac/s/fs01/main.js:1:56870)
+    at r (https://cadmus2.script.ac/s/fs01/main.js:1:53841)
+    at t (https://cadmus2.script.ac/s/fs01/main.js:1:54102)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:54248)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:55351)
+    at unknown (https://cadmus2.script.ac/s/fs01/main.js:1:205012)
+    at global code (https://cadmus2.script.ac/s/fs01/main.js:1:205043)
+[  106824ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://s.adnxtr.com/2/696173/BESy6FgIRAi8ihb4/challenge.gif?bt=programmatic&ci=696173&si=2710100&pc=442729171&pi=639717749&cr=255286554&dm=300x250&dt=6961731463688030969001&ac=35465258&ui=0&cb=323843334&pp=N2883.1972103DOUBLECLICKBIDMANAG&r1=:0
+[  106890ms] [TIMEEND] a: 0.007ms @ https://static.adsafeprotected.com/sca.17.6.4.js:31

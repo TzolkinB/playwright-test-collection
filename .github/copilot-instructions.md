@@ -43,6 +43,7 @@
 - Ads/iframes can interfere with UI tests; preserve fixture behavior that removes ad iframes.
 - Avoid assumptions that game responses are immediate; maintain reliable waits/assertions.
 - Do not introduce `test.only`; CI forbids it.
+- **Cannot automate the "Please wait." message** on the Checkers game: the third-party site's AI now computes the computer's move synchronously in the same JS execution block as the player-move handler. The text is set and immediately overwritten before Playwright can observe it — polling assertions (100ms interval), `Promise.all` concurrency, and event-driven `MutationObserver` all fail because DOM mutations batch to the final "Make a move." state. This is not fixable from the test side without control over the application source.
 
 ## Key Files
 
