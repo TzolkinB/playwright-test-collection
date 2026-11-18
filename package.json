@@ -14,21 +14,21 @@
   "description": "",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@playwright/test": "1.61.0",
-    "@types/node": "^26.0.0",
-    "eslint": "^10.5.0",
+    "@playwright/test": "1.62.1",
+    "@types/node": "^26.1.2",
+    "eslint": "^10.8.0",
     "eslint-config-prettier": "^10.1.8",
-    "globals": "^17.6.0",
+    "globals": "^17.8.0",
     "husky": "^9.1.7",
     "jiti": "^2.7.0",
-    "lint-staged": "^17.0.8",
-    "prettier": "3.8.4",
-    "typescript-eslint": "^8.61.1"
+    "lint-staged": "^17.3.0",
+    "prettier": "3.9.6",
+    "typescript-eslint": "^8.65.0"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
-    "eslint-plugin-playwright": "^2.10.4"
+    "eslint-plugin-playwright": "^2.11.0"
   }
 }
